@@ -1,0 +1,10 @@
+# 忽略 node_modules 資料夾
+node_modules/
+
+# 忽略 .env 檔案
+.env
+
+# 忽略其他不必要的檔案
+.DS_Store
+
+text.py
