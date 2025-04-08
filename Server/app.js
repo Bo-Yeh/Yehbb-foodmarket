@@ -10,9 +10,16 @@ const faqRouter = require('./routes/faqRouter');
 const favoriteRouter = require('./routes/favoritesRouter');
 const transactionRouter = require('./routes/transportationRouter');
 const vendorRouter = require('./routes/vendorsRouter');
+const { applyBasicSecurity, apiLimiter } = require('./middlewares/security');
 
 
 const app = express();
+// 應用安全中間件
+applyBasicSecurity(app);
+
+// 中間件調整
+app.use('/api', apiLimiter); // 對所有API路由啟用速率限制
+
 
 // 中間件：僅非 LINE 路由使用 JSON 解析
 app.use((req, res, next) => {
